@@ -7,6 +7,7 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
         <script type="module" src="https://unpkg.com/esp-web-tools@10/dist/web/install-button.js?module"></script>
         <script src="js/main.js"></script>
+        <script src="js/opp_firmware.js"></script>
         <!--[if lt IE 9]>
           <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
         <![endif]-->
@@ -80,19 +81,33 @@
                                 <div class="alert alert-danger" role="alert">
                                    Flashing firmware for the wrong PCB version can permanently damage your Poi.
                                 </div>
-                                <h4 class="header">Latest Firmware - For app 2.X</h4>
-                                <div class="row">
-                                    <div class="col-md-4">
-                                        <h5 class="header">PCB V3.0.0 25-Pixels</h5>
-                                        <esp-web-install-button class="btn" manifest="opp_firmware/app_2.0/3.0.0-25px/manifest.json"></esp-web-install-button>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <h5 class="header">PCB V3.0.0 55-Pixels</h5>
-                                        <esp-web-install-button class="btn" manifest="opp_firmware/app_2.0/3.0.0-55px/manifest.json"></esp-web-install-button>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <h5 class="header">PCB V2.2.1 20-Pixels</h5>
-                                        <esp-web-install-button class="btn" manifest="opp_firmware/app_2.0/2.2.1-20px/manifest.json"></esp-web-install-button>
+                                <div id="opp-dynamic-releases" style="display: none;">
+                                    <h4 class="header">Firmware - For app 2.X</h4>
+                                    <p style="font-size: 18px">
+                                        Version <select id="opp-release-version"></select>
+                                        <small id="opp-release-date"></small>
+                                    </p>
+                                    <ul>
+                                        <li><p style="font-size: 18px"><b>Update</b> keeps your patterns and settings. Leave "Erase device" unchecked when asked.</p></li>
+                                        <li><p style="font-size: 18px"><b>Full install</b> erases everything and restores the default patterns and settings. Use it for a new controller.</p></li>
+                                    </ul>
+                                    <div class="row" id="opp-release-variants"></div>
+                                </div>
+                                <div id="opp-static-releases">
+                                    <h4 class="header">Latest Firmware - For app 2.X</h4>
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <h5 class="header">PCB V3.0.0 25-Pixels</h5>
+                                            <esp-web-install-button class="btn" manifest="opp_firmware/app_2.0/3.0.0-25px/manifest.json"></esp-web-install-button>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <h5 class="header">PCB V3.0.0 55-Pixels</h5>
+                                            <esp-web-install-button class="btn" manifest="opp_firmware/app_2.0/3.0.0-55px/manifest.json"></esp-web-install-button>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <h5 class="header">PCB V2.2.1 20-Pixels</h5>
+                                            <esp-web-install-button class="btn" manifest="opp_firmware/app_2.0/2.2.1-20px/manifest.json"></esp-web-install-button>
+                                        </div>
                                     </div>
                                 </div>
                                 <h4 class="header">Legacy Firmware - For app 1.0</h4>
